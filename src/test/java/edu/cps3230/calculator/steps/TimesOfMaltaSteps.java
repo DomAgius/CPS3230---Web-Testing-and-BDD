@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class StoriesNavigationSteps
+public class TimesOfMaltaSteps
 {
     WebDriver driver;
     TimesOfMaltaPageObject times;
     WeatherCarouselPageObject weather;
-    // Stores the index of the last current active item in the weather carousel
+    // Stores the index of the last current active forecast in the weather carousel
     int lastActiveIndex;
 
     @After
@@ -67,6 +67,27 @@ public class StoriesNavigationSteps
         Assert.assertTrue(times.getStories().size() >= numOfStories);
     }
 
+    /* Steps specific to the weather carousel */
+
+    @And("I click on the right carousel button")
+    public void iClickOnTheRightCarouselButton()
+    {
+        // Get the weather carousel page object
+        weather = times.getWeatherCarousel();
+        // Close engagement banner which appears after switching pages
+        times.closeEngagementBanner();
+        // Store the current active forecast slide index
+        lastActiveIndex = weather.getActiveSlideIndex();
+        // Click the right carousel button
+        weather.clickRight();
+    }
+
+    @Then("I should see the next forecast")
+    public void iShouldSeeTheNextForecast()
+    {
+        // Check that the previous forecast slide is now marked as active
+        Assertions.assertEquals(lastActiveIndex+1, weather.getActiveSlideIndex());
+    }
 
     @And("I click on the left carousel button")
     public void iClickOnTheLeftCarouselButton()
@@ -77,36 +98,16 @@ public class StoriesNavigationSteps
         times.closeEngagementBanner();
         // At first click right so that the left carousel button is enabled
         weather.clickRight();
-        // Store the current active weather slide index
+        // Store the current active forecast slide index
         lastActiveIndex = weather.getActiveSlideIndex();
         // Then, click the left carousel button
         weather.clickLeft();
     }
 
-    @Then("I should see the previous item")
-    public void iShouldSeeThePreviousItem()
+    @Then("I should see the previous forecast")
+    public void iShouldSeeThePreviousForecast()
     {
-        // Check that the previous slide is now marked as active
+        // Check that the previous forecast slide is now marked as active
         Assertions.assertEquals(lastActiveIndex-1, weather.getActiveSlideIndex());
-    }
-
-    @And("I click on the right carousel button")
-    public void iClickOnTheRightCarouselButton()
-    {
-        // Get the weather carousel page object
-        weather = times.getWeatherCarousel();
-        // Close engagement banner which appears after switching pages
-        times.closeEngagementBanner();
-        // Store the current active weather slide index
-        lastActiveIndex = weather.getActiveSlideIndex();
-        // Click the right carousel button
-        weather.clickRight();
-    }
-
-    @Then("I should see the next item")
-    public void iShouldSeeTheNextItem()
-    {
-        // Check that the previous slide is now marked as active
-        Assertions.assertEquals(lastActiveIndex+1, weather.getActiveSlideIndex());
     }
 }
