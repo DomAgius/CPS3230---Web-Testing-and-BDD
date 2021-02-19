@@ -15,5 +15,5 @@ Feature: Times Poll
     Given I am a user of www.timesofmalta.com
     When I visit the timesofmalta homepage
     And I click on the "Weather" section
-    And I click on the left carousel button
-    Then I should see the previous item
+    And I click on the right carousel button
+    Then I should see the next item

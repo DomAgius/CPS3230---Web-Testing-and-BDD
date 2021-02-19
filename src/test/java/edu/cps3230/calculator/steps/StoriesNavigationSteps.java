@@ -77,11 +77,10 @@ public class StoriesNavigationSteps
         times.closeEngagementBanner();
         // At first click right so that the left carousel button is enabled
         weather.clickRight();
-        // Store the current active slide index
+        // Store the current active weather slide index
         lastActiveIndex = weather.getActiveSlideIndex();
         // Then, click the left carousel button
         weather.clickLeft();
-
     }
 
     @Then("I should see the previous item")
@@ -89,5 +88,25 @@ public class StoriesNavigationSteps
     {
         // Check that the previous slide is now marked as active
         Assertions.assertEquals(lastActiveIndex-1, weather.getActiveSlideIndex());
+    }
+
+    @And("I click on the right carousel button")
+    public void iClickOnTheRightCarouselButton()
+    {
+        // Get the weather carousel page object
+        weather = times.getWeatherCarousel();
+        // Close engagement banner which appears after switching pages
+        times.closeEngagementBanner();
+        // Store the current active weather slide index
+        lastActiveIndex = weather.getActiveSlideIndex();
+        // Click the right carousel button
+        weather.clickRight();
+    }
+
+    @Then("I should see the next item")
+    public void iShouldSeeTheNextItem()
+    {
+        // Check that the previous slide is now marked as active
+        Assertions.assertEquals(lastActiveIndex+1, weather.getActiveSlideIndex());
     }
 }
