@@ -43,11 +43,13 @@ public class WeatherCarouselPageObject
         wait.until(e -> element.getAttribute("style").contains("transition-duration: 0ms"));
     }
 
-    public int getSelectedItemIndex()
+    public int getActiveSlideIndex()
     {
-
-        // Find the left carousel button and click it
-        //WebElement carouselWrapper = driver.findElement(By.);
-        return 0;
+        // Get all weather tiles
+        List<WebElement> tiles = driver.findElements(By.className("we-Weather_Week_Single"));
+        // Find the active weather tile
+        WebElement activeTile = driver.findElement(By.className("swiper-slide-active"));
+        // Return the index of the active tile in the list
+        return tiles.indexOf(activeTile);
     }
 }

@@ -17,7 +17,8 @@ public class StoriesNavigationSteps
     WebDriver driver;
     TimesOfMaltaPageObject times;
     WeatherCarouselPageObject weather;
-
+    // Stores the index of the last current active item in the weather carousel
+    int lastActiveIndex;
 
     @After
     public void teardown()
@@ -76,6 +77,8 @@ public class StoriesNavigationSteps
         times.closeEngagementBanner();
         // At first click right so that the left carousel button is enabled
         weather.clickRight();
+        // Store the current active slide index
+        lastActiveIndex = weather.getActiveSlideIndex();
         // Then, click the left carousel button
         weather.clickLeft();
 
@@ -84,6 +87,7 @@ public class StoriesNavigationSteps
     @Then("I should see the previous item")
     public void iShouldSeeThePreviousItem()
     {
-
+        // Check that the previous slide is now marked as active
+        Assertions.assertEquals(lastActiveIndex-1, weather.getActiveSlideIndex());
     }
 }
