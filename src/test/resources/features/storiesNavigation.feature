@@ -13,8 +13,8 @@ Feature: Stories Navigation
 
     Examples:
     |sectionName  |numStories |
-    |"Latest"     |10         |
-    |"National"   |10         |
+    |"Latest"     |5          |
+    |"National"   |8          |
     |"World"      |10         |
-    |"Opinion"    |10         |
-    |"Community"  |10         |
+    |"Opinion"    |12         |
+    |"Community"  |15         |
