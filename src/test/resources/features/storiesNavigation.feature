@@ -18,3 +18,6 @@ Feature: Stories Navigation
     |"World"      |10         |
     |"Opinion"    |12         |
     |"Community"  |15         |
+
+  Scenario: Search functionality
+

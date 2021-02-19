@@ -1,6 +1,7 @@
 package edu.cps3230.calculator.steps;
 
 import edu.cps3230.calculator.pageobjects.TimesOfMaltaPageObject;
+import edu.cps3230.calculator.pageobjects.WeatherCarouselPageObject;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,15 +10,21 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.List;
 
 public class StoriesNavigationSteps
 {
     WebDriver driver;
     TimesOfMaltaPageObject times;
+    WeatherCarouselPageObject weather;
+
+
+    @After
+    public void teardown()
+    {
+        // Close browser after each scenario
+        driver.close();
+    }
 
     @Given("I am a user of www.timesofmalta.com")
     public void iAmAUserOfWwwTimesofmaltaCom()
@@ -34,6 +41,8 @@ public class StoriesNavigationSteps
         driver.get("https://timesofmalta.com/");
         // Create a new instance of the website's page object
         times = new TimesOfMaltaPageObject(driver);
+        // Accept cookies
+        times.acceptCookies();
     }
 
     @And("I click on the {string} section")
@@ -57,10 +66,24 @@ public class StoriesNavigationSteps
         Assert.assertTrue(times.getStories().size() >= numOfStories);
     }
 
-    @After
-    public void teardown()
+
+    @And("I click on the left carousel button")
+    public void iClickOnTheLeftCarouselButton()
     {
-        // Close browser after each scenario
-        driver.close();
+        // Get the weather carousel page object
+        weather = times.getWeatherCarousel();
+        // Close engagement banner which appears after switching pages
+        times.closeEngagementBanner();
+        // At first click right so that the left carousel button is enabled
+        weather.clickRight();
+        // Then, click the left carousel button
+        weather.clickLeft();
+
+    }
+
+    @Then("I should see the previous item")
+    public void iShouldSeeThePreviousItem()
+    {
+
     }
 }
