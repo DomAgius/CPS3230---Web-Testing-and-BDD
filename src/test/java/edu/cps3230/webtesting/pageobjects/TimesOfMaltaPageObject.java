@@ -1,9 +1,8 @@
-package edu.cps3230.calculator.pageobjects;
+package edu.cps3230.webtesting.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +19,9 @@ public class TimesOfMaltaPageObject
 
     public void acceptCookies()
     {
+        // Wait for accept cookies button to appear
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("fo-FormCtrl_Btn-Cntr")));
         // Find and click the accept cookies button
         driver.findElement(By.className("fo-FormCtrl_Btn-Cntr")).click();
     }

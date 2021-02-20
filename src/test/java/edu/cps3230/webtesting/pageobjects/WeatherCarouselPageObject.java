@@ -1,4 +1,4 @@
-package edu.cps3230.calculator.pageobjects;
+package edu.cps3230.webtesting.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

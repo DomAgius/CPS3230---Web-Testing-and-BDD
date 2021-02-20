@@ -1,4 +1,4 @@
-package edu.cps3230.calculator;
+package edu.cps3230.webtesting;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

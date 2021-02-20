@@ -1,7 +1,7 @@
-package edu.cps3230.calculator.steps;
+package edu.cps3230.webtesting.steps;
 
-import edu.cps3230.calculator.pageobjects.TimesOfMaltaPageObject;
-import edu.cps3230.calculator.pageobjects.WeatherCarouselPageObject;
+import edu.cps3230.webtesting.pageobjects.TimesOfMaltaPageObject;
+import edu.cps3230.webtesting.pageobjects.WeatherCarouselPageObject;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -51,6 +51,8 @@ public class TimesOfMaltaSteps
     {
         // Click on specific section
         times.clickSection(sectionName);
+        // Close engagement banner which appears after switching pages
+        times.closeEngagementBanner();
     }
 
     @Then("I should be taken to {string} section")
@@ -74,8 +76,6 @@ public class TimesOfMaltaSteps
     {
         // Get the weather carousel page object
         weather = times.getWeatherCarousel();
-        // Close engagement banner which appears after switching pages
-        times.closeEngagementBanner();
         // Store the current active forecast slide index
         lastActiveIndex = weather.getActiveSlideIndex();
         // Click the right carousel button
@@ -94,8 +94,6 @@ public class TimesOfMaltaSteps
     {
         // Get the weather carousel page object
         weather = times.getWeatherCarousel();
-        // Close engagement banner which appears after switching pages
-        times.closeEngagementBanner();
         // At first click right so that the left carousel button is enabled
         weather.clickRight();
         // Store the current active forecast slide index
