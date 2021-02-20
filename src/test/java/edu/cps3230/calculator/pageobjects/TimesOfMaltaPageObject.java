@@ -44,7 +44,10 @@ public class TimesOfMaltaPageObject
 
     public String getSectionTitle()
     {
-        // First get the container of the section header, then get the header within it and return its text
+        // Wait for section header container to appear
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("li-ListingArticles_head")));
+        // Then get the header within it and return its text
         WebElement sectionHeaderContainer = driver.findElement(By.className("li-ListingArticles_head"));
         WebElement sectionHeader = sectionHeaderContainer.findElement(By.tagName("a"));
         return sectionHeader.getText();
