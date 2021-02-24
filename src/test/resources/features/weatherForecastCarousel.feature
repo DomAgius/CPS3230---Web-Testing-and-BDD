@@ -8,7 +8,7 @@ Feature: Weather Forecast Carousel
     Given I am a user of www.timesofmalta.com
     When I visit the timesofmalta homepage
     And I click on the "Weather" section
-    Then I should see a carousel containing five weather forecasts
+    Then I should see a carousel containing weather forecasts
 
   Scenario: Click carousel right
     Given I am a user of www.timesofmalta.com

@@ -13,6 +13,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class TimesOfMaltaSteps
 {
     WebDriver driver;
@@ -39,8 +42,11 @@ public class TimesOfMaltaSteps
     @When("I visit the timesofmalta homepage")
     public void iVisitTheTimesofmaltaHomepage()
     {
+        // Set chrome driver path
+        Path chromeDriverPath = Paths.get(System.getProperty("user.dir"), "src", "test", "resources", "drivers",
+                "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",  chromeDriverPath.toString());
         // Create a new instance of the browser
-        System.setProperty("webdriver.chrome.driver", "F:/Domenico Agius/Documents/webtesting/chromedriver.exe");
         driver = new ChromeDriver();
         // Go to the home page
         driver.get("https://timesofmalta.com/");
@@ -106,8 +112,8 @@ public class TimesOfMaltaSteps
 
     /* Steps specific to the weather carousel */
 
-    @Then("I should see a carousel containing five weather forecasts")
-    public void iShouldSeeACarouselContainingFiveWeatherForecasts()
+    @Then("I should see a carousel containing weather forecasts")
+    public void iShouldSeeACarouselContainingWeatherForecasts()
     {
         // Get the weather carousel page object
         weather = times.getWeatherCarousel();
