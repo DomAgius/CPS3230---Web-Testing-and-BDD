@@ -106,6 +106,15 @@ public class TimesOfMaltaSteps
 
     /* Steps specific to the weather carousel */
 
+    @Then("I should see a carousel containing five weather forecasts")
+    public void iShouldSeeACarouselContainingFiveWeatherForecasts()
+    {
+        // Get the weather carousel page object
+        weather = times.getWeatherCarousel();
+        // Check if the carousel's wrapper element exists
+        Assertions.assertNotNull(weather.getCarouselWrapper());
+    }
+
     @And("I click on the right carousel button")
     public void iClickOnTheRightCarouselButton()
     {

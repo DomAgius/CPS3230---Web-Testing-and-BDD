@@ -18,6 +18,22 @@ public class WeatherCarouselPageObject
         this.driver = driver;
     }
 
+    public WebElement getCarouselWrapper()
+    {
+        List<WebElement> elements = driver.findElements(By.className("swiper-wrapper"));
+
+        // If list has only one element, return it
+        if (elements.size() == 1)
+        {
+            return elements.get(0);
+        }
+        // If it has more or less than 1 elements, there is an error so return null
+        else
+        {
+            return null;
+        }
+    }
+
     public void clickLeft()
     {
         // Find the left carousel button and click it
@@ -37,7 +53,7 @@ public class WeatherCarouselPageObject
     private void waitForCarouselToStopMoving()
     {
         // Find carousel wrapper element
-        WebElement element = driver.findElement(By.className("swiper-wrapper"));
+        WebElement element = getCarouselWrapper();
         // Wait until the transition duration of the swiper wrapper reaches zero
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(e -> element.getAttribute("style").contains("transition-duration: 0ms"));
