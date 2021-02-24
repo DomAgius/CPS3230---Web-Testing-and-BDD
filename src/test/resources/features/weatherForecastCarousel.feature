@@ -1,8 +1,8 @@
-Feature: Times Poll
+Feature: Weather Forecast Carousel
 
   In order to view the forecasts for the next 5 days
   As a user of www.timesofmalta.com
-  I want to be able to navigate a carousel of weather for casts
+  I want to be able to navigate a carousel of weather forecasts
 
   Scenario: Click carousel right
     Given I am a user of www.timesofmalta.com

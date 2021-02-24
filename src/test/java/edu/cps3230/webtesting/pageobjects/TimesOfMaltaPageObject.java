@@ -54,7 +54,9 @@ public class TimesOfMaltaPageObject
 
     public void searchForArticles(String searchString)
     {
-        // Click search button
+        // Wait for search button to appear and click it
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("na-SecondaryNavigation_SearchBtn")));
         driver.findElement(By.className("na-SecondaryNavigation_SearchBtn")).click();
         // Find search bar and input search string
         WebElement searchbar = driver.findElement(By.className("na-Navigation_SearchBar"));

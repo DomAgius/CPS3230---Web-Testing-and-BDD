@@ -45,6 +45,9 @@ public class WeatherCarouselPageObject
 
     public int getActiveSlideIndex()
     {
+        // Wait until one of the weather tiles becomes the active tile (it may not appear immediately)
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("swiper-slide-active")));
         // Get all weather tiles
         List<WebElement> tiles = driver.findElements(By.className("we-Weather_Week_Single"));
         // Find the active weather tile

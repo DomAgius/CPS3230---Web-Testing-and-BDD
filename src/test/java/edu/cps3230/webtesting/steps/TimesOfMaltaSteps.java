@@ -33,14 +33,15 @@ public class TimesOfMaltaSteps
     @Given("I am a user of www.timesofmalta.com")
     public void iAmAUserOfWwwTimesofmaltaCom()
     {
-        // Create a new instance of the browser
-        System.setProperty("webdriver.chrome.driver", "F:/Domenico Agius/Documents/webtesting/chromedriver.exe");
-        driver = new ChromeDriver();
+        // Do nothing - no authentication needs to be performed
     }
 
     @When("I visit the timesofmalta homepage")
     public void iVisitTheTimesofmaltaHomepage()
     {
+        // Create a new instance of the browser
+        System.setProperty("webdriver.chrome.driver", "F:/Domenico Agius/Documents/webtesting/chromedriver.exe");
+        driver = new ChromeDriver();
         // Go to the home page
         driver.get("https://timesofmalta.com/");
         // Create a new instance of the website's page object
