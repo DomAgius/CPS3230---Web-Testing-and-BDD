@@ -36,9 +36,11 @@ public class TimesOfMaltaPageObject
 
     public void clickSection(String sectionName)
     {
-        // Find the button that takes us to the section with section name, and then click it
-        WebElement sectionButton = driver.findElement(By.linkText(sectionName));
-        sectionButton.click();
+        // Find the button that takes us to the section with name "sectionName" to appear
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(sectionName)));
+        // Then click the button
+        driver.findElement(By.linkText(sectionName)).click();
     }
 
     public String getSectionTitle()

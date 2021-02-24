@@ -56,7 +56,7 @@ public class WeatherCarouselPageObject
         WebElement element = getCarouselWrapper();
         // Wait until the transition duration of the swiper wrapper reaches zero
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(e -> element.getAttribute("style").contains("transition-duration: 0ms"));
+        wait.until(ExpectedConditions.attributeContains(element, "style", "transition-duration: 0ms"));
     }
 
     public int getActiveSlideIndex()
