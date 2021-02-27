@@ -18,7 +18,7 @@ public class TimesOfMaltaPageObject
         this.driver = webDriver;
     }
 
-    public void acceptCookies()
+    public void disableEngagementBanner()
     {
         // Wait for accept cookies button to appear
         WebDriverWait wait = new WebDriverWait(driver, 10);

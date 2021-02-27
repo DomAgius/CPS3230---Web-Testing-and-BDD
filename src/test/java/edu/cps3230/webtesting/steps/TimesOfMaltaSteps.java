@@ -52,8 +52,8 @@ public class TimesOfMaltaSteps
         driver.get("https://timesofmalta.com/");
         // Create a new instance of the website's page object
         times = new TimesOfMaltaPageObject(driver);
-        // Accept cookies
-        times.acceptCookies();
+        // Disable the engagement banner at the bottom of the page
+        times.disableEngagementBanner();
     }
 
     @And("I click on the {string} section")
@@ -126,8 +126,8 @@ public class TimesOfMaltaSteps
     {
         // Get the weather carousel page object
         weather = times.getWeatherCarousel();
-        // Store the current active forecast slide index
-        lastActiveIndex = weather.getActiveSlideIndex();
+        // Store the current active forecast tile index
+        lastActiveIndex = weather.getActiveTileIndex();
         // Click the right carousel button
         weather.clickRight();
     }
@@ -135,8 +135,8 @@ public class TimesOfMaltaSteps
     @Then("I should see the next forecast")
     public void iShouldSeeTheNextForecast()
     {
-        // Check that the previous forecast slide is now marked as active
-        Assertions.assertEquals(lastActiveIndex+1, weather.getActiveSlideIndex());
+        // Check that the previous forecast tile is now marked as active
+        Assertions.assertEquals(lastActiveIndex+1, weather.getActiveTileIndex());
     }
 
     @And("I click on the left carousel button")
@@ -146,8 +146,8 @@ public class TimesOfMaltaSteps
         weather = times.getWeatherCarousel();
         // At first click right so that the left carousel button is enabled
         weather.clickRight();
-        // Store the current active forecast slide index
-        lastActiveIndex = weather.getActiveSlideIndex();
+        // Store the current active forecast tile index
+        lastActiveIndex = weather.getActiveTileIndex();
         // Then, click the left carousel button
         weather.clickLeft();
     }
@@ -155,7 +155,7 @@ public class TimesOfMaltaSteps
     @Then("I should see the previous forecast")
     public void iShouldSeeThePreviousForecast()
     {
-        // Check that the previous forecast slide is now marked as active
-        Assertions.assertEquals(lastActiveIndex-1, weather.getActiveSlideIndex());
+        // Check that the previous forecast tile is now marked as active
+        Assertions.assertEquals(lastActiveIndex-1, weather.getActiveTileIndex());
     }
 }

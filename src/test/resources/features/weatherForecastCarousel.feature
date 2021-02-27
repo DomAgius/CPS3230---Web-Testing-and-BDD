@@ -4,7 +4,7 @@ Feature: Weather Forecast Carousel
   As a user of www.timesofmalta.com
   I want to be able to navigate a carousel of weather forecasts
 
-  Scenario: Weather carousel exists
+  Scenario: Weather carousel is present
     Given I am a user of www.timesofmalta.com
     When I visit the timesofmalta homepage
     And I click on the "Weather" section

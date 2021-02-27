@@ -18,7 +18,7 @@ public class WeatherCarouselPageObject
 
     public WebElement getCarouselWrapper()
     {
-        // Find the carousel wrapper element
+        // Search for the carousel wrapper element
         List<WebElement> elements = driver.findElements(By.className("swiper-wrapper"));
 
         // If list has only one element, return it
@@ -45,7 +45,7 @@ public class WeatherCarouselPageObject
         driver.findElement(By.id("js-next")).click();
     }
 
-    public int getActiveSlideIndex()
+    public int getActiveTileIndex()
     {
         // Wait until one of the weather tiles becomes the active tile (it may not appear immediately)
         WebDriverWait wait = new WebDriverWait(driver, 10);
